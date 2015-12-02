@@ -10,4 +10,4 @@ Cilj mojega projekta je primerjati igralce med sabo, ugotoviti kateri je najbol≈
 
 ## Viri:
 
-http://www.nhl.com/stats/player?reportType=season&report=skatersummary&season=20152016&gameType=2&aggregate=0&pos=S
+http://www.nhl.com/stats/player?reportType=season&report=skatersummary&season=20142015&gameType=2&aggregate=0&pos=S
