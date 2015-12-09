@@ -1,20 +1,40 @@
 # 2. faza: Uvoz podatkov
+#uvozimo podatke
+require(jsonlite)
+require(httr)
+r <- GET("http://www.nhl.com/stats/rest/grouped/skaters/season/skatersummary?cayenneExp=seasonId=20142015%20and%20gameTypeId=2")
+text <- content(r, "text")
+data <- fromJSON(content(r, "text"))
+tabela <- data.frame(data)
 
-# Funkcija, ki uvozi podatke iz datoteke druzine.csv
-uvozi.druzine <- function() {
-  return(read.table("podatki/druzine.csv", sep = ";", as.is = TRUE,
-                      row.names = 1,
-                      col.names = c("obcina", "en", "dva", "tri", "stiri"),
-                      fileEncoding = "Windows-1250"))
-}
+#omejimo na manj kategorij
+tabela$data.plusMinus <- NULL
+tabela$data.otGoals <- NULL
+tabela$data.playerFirstName <- NULL
+tabela$data.playerLastName <- NULL
+tabela$total <- NULL
+tabela$data.faceoffWinPctg <- NULL
+tabela$data.playerId <- NULL
+tabela$data.playerTeamsPlayedFor <- NULL
+tabela$data.seasonId <- NULL
+tabela$data.playerPositionCode <- NULL
+tabela$data.ppGoals <- NULL
+tabela$data.gameWinningGoals <- NULL
+tabela$data.shPoints <- NULL
+tabela$data.shGoals <- NULL
+tabela$data.ppPoints <- NULL
+tabela$data.shiftsPerGame <- NULL
+tabela$data.penaltyMinutes <- NULL
+tabela$data.shootingPctg <- NULL
 
-# Zapišimo podatke v razpredelnico druzine.
-druzine <- uvozi.druzine()
+#preuredimo stolpce
+tabela <- tabela[c(4,2,7,3,1,5,6)]
 
-obcine <- uvozi.obcine()
-
-# Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
-# potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
-# datoteko, tukaj pa bi klicali tiste, ki jih potrebujemo v
-# 2. fazi. Seveda bi morali ustrezno datoteko uvoziti v prihodnjih
-# fazah.
+#preimenujemo stolpce
+names(tabela)[1] <- "igralci"
+names(tabela)[2] <- "odigrane tekme"
+names(tabela)[3] <- "čas na ledu"
+names(tabela)[4] <- "goli"
+names(tabela)[5] <- "asistence"
+names(tabela)[6] <- "točke"
+names(tabela)[7] <- "streli"
