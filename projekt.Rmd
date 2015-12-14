@@ -1,6 +1,6 @@
 ---
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
-author: "Študent FMF"
+author: "Anja Leskovšek"
 output:
   pdf_document:
     latex_engine: xelatex
@@ -18,16 +18,38 @@ source("lib/libraries.r", encoding = "UTF-8")
 ```
 
 # Izbira teme
+Moja tema je analiza podatkov hokejske lige NHL za leto 15/14.
+V mojem projektu bom naredila primerjavo med mlajšimi igralci in starejšimi igralci. Pogledala bom njihovo statistiko in analizirala kateri imajo boljše rezultate. Naredila bom tudi analizo njihove statistike glede na njihov rojstni datum. Glede na raziskave (http://www.bbc.com/sport/olympics/18891749) naj bi bili hokejisti rojeni januarja, febuarja ali marca boljši. Primerjala bom torej njihovo statistiko in mesec rojstva, ter ugotovila ali raziskava tudi v mojem primeru drži. 
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+
+
+
+
 
 ***
 
 # Obdelava, uvoz in čiščenje podatkov
+POVEZAVE:
+-http://www.nhl.com/stats/player?reportType=season&report=skatersummary&season=20142015&gameType=2&sort=points&aggregate=1&pos=S
+-http://www.nhl.com/stats/player?reportType=season&report=bios&season=20142015&gameType=2&sort=playerBirthDate&aggregate=1&pos=S
 
-```{r uvoz, echo=FALSE}
-source("uvoz/uvoz.r", encoding = "UTF-8")
-```
+
+Podatke, ki sem jih uvozila so bili v obliki JSON. 
+
+Na prvem linku imamo veliko statistik za 882 igralcev, vendar za moj projekt niso vse pomembne, zato sem nekaj stolpcev tudi odstranila. 
+
+-imena igralcev (imenska spremenljivka)
+- odigrane tekme ( številska spremenljivka): koliko tekem je posamezni igralec odigral v sezoni
+- streli ( številska spremenljivka ): koliko strelov je posamezni igralec imel v sezoni
+- goli ( številska spremenljivka ): koliko golov je posamezni igralec dal v sezoni
+- asistence ( številska spremenljivka ): koliko asistenc je posamezni igralec imel v sezoni
+- točke (številska spremenljivka): koliko točk je dal posamezni igralec v sezoni
+- igralni položaj ( imenska spremenljivka ): na katerem položaju je igral igralec -> D=branilec, L=levo krilo, R=desno krilo, C=center.
+- strelni procent (številska spremenljivka): koliko golov je posamezni igralec zadel glede na strele v sezoni
+
+
+Te stolpce sem preuredila in preimenovala v slovenščino. Za procent strela sem sama napisala funkcijo za izračun in dodala h tabeli ter odstranila tiste vrstice, ki so vsebovale NA. Ker so nekateri igralci zelo malo igrali sem odstranila vse tiste vrstice, kjer so bil odigrane tekme pod 15. Potem sem tabelo razvrstila po abecednem vrstnem redu imen. Poleg prvotne tabele sem naredila še dodatno tabelo, ki sem jo imenovala povprečja, kjer sem izračunala povprečje vsake podkategorije. 
+
 
 Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
 z Wikipedije. Poglejmo si začetka obeh uvoženih razpredelnic.
