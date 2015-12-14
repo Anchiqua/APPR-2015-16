@@ -19,7 +19,7 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 Moja tema je analiza podatkov hokejske lige NHL za leto 15/14.
-V mojem projektu bom naredila primerjavo med mlajšimi igralci in starejšimi igralci. Pogledala bom njihovo statistiko in analizirala kateri imajo boljše rezultate. Naredila bom tudi analizo njihove statistike glede na njihov rojstni datum. Glede na raziskave (http://www.bbc.com/sport/olympics/18891749) naj bi bili hokejisti rojeni januarja, febuarja ali marca boljši. Primerjala bom torej njihovo statistiko in mesec rojstva, ter ugotovila ali raziskava tudi v mojem primeru drži. 
+V mojem projektu bom naredilarazlične primerjave in analize.  Najbolj me zanima analiza njihove statistike glede na njihov rojstni datum. Glede na raziskave (http://www.bbc.com/sport/olympics/18891749) naj bi bili hokejisti rojeni januarja, febuarja ali marca boljši. Primerjala bom torej njihovo statistiko in mesec rojstva, ter ugotovila ali raziskava tudi v mojem primeru drži. 
 
 
 
@@ -50,9 +50,7 @@ Na prvem linku imamo veliko statistik za 882 igralcev, vendar za moj projekt nis
 
 Te stolpce sem preuredila in preimenovala v slovenščino. Za procent strela sem sama napisala funkcijo za izračun in dodala h tabeli ter odstranila tiste vrstice, ki so vsebovale NA. Ker so nekateri igralci zelo malo igrali sem odstranila vse tiste vrstice, kjer so bil odigrane tekme pod 15. Potem sem tabelo razvrstila po abecednem vrstnem redu imen. Poleg prvotne tabele sem naredila še dodatno tabelo, ki sem jo imenovala povprečja, kjer sem izračunala povprečje vsake podkategorije. 
 
-
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Poglejmo si začetka obeh uvoženih razpredelnic.
+Naredila sem nekaj grafov z plotly in ggplo2. Z plotly sem naredila grafe, ki prikazujejo koliko točk, strelov, golov in asistenc je posamezni igralec dal v vseh odigranih tekmah skupaj. Z ggplot2 pa sem za prikaz naredila 6 grafov, ki prikazujejo koliko igralce in njiihove različne statistike ( koliko točk so dali, goli, asistence,streli, odigrane tekme ter njihov strelni procent) ter jih primerjala z drugimi igralci. Zraven sem tudi dodala ravno vodoravno črto, ki prikazuje povprečje določene kategorije.
 
 ```{r razpredelnice}
 kable(head(druzine))
