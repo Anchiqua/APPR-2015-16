@@ -6,12 +6,17 @@ require(jsonlite)
 require(httr)
 require(zoo)
 library(rvest)
+require(plyr)
 
 r <- GET("http://www.nhl.com/stats/rest/grouped/skaters/season/skatersummary?cayenneExp=seasonId=20142015%20and%20gameTypeId=2")
 text <- content(r, "text", encoding = "UTF-8")
 data <- fromJSON(content(r, "text"))
 tabela <- data.frame(data)
 
+g <- GET("http://www.nhl.com/stats/rest/individual/skaters/season/bios?cayenneExp=seasonId=20142015%20and%20gameTypeId=2")
+tekst <- content(g, "text", encoding ="UTF-8")
+datoteka <- fromJSON(content(g, "text"))
+podatki<- data.frame(datoteka)
 
 tabela$data.plusMinus <- NULL
 tabela$data.otGoals <- NULL
@@ -32,6 +37,36 @@ tabela$data.shiftsPerGame <- NULL
 tabela$data.penaltyMinutes <- NULL
 tabela$data.shootingPctg <- NULL
 
+
+podatki$data.assists <- NULL
+podatki$data.gamesPlayed <- NULL
+podatki$data.goals <- NULL
+podatki$data.penaltyMinutes <- NULL
+podatki$data.playerBirthCity <- NULL
+podatki$data.playerBirthCountry <- NULL
+podatki$data.playerBirthStateProvince <-NULL
+podatki$data.playerCurrentSweaterNumber <- NULL
+podatki$data.playerDraftOverallPickNo <- NULL
+podatki$data.playerDraftRoundNo <- NULL
+podatki$data.playerDraftYear <- NULL
+podatki$data.playerFirstName <- NULL
+podatki$data.playerId <- NULL
+podatki$data.playerLastName <- NULL
+podatki$data.playerNationality <- NULL
+podatki$data.playerPositionCode <- NULL
+podatki$data.playerShootsCatches <- NULL
+podatki$data.playerTeamsPlayedFor <- NULL
+podatki$data.playerWeight <- NULL
+podatki$data.plusMinus <- NULL
+podatki$data.points <- NULL
+podatki$data.seasonId <- NULL
+podatki$total <- NULL
+
+podatki <- podatki[c(3,1,2)]
+names(podatki)[1] <- "igralci"
+names(podatki)[2] <- "datum.rojstva"
+names(podatki)[3] <- "višina"
+
 tabela <- tabela[c(4,2,7,3,1,6,5)]
 
 names(tabela)[1] <- "igralci"
@@ -41,6 +76,9 @@ names(tabela)[4] <- "goli"
 names(tabela)[5] <- "asistence"
 names(tabela)[6] <- "točke"
 names(tabela)[7] <- "igralni.položaj"
+
+#združimo podatke
+tabela <- inner_join(tabela, podatki)
 
 tabela["procent.strela"] <- (tabela$goli / tabela$streli)*100
 tabela <- tabela[!is.na(tabela$procent.strela),]
