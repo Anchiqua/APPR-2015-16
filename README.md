@@ -1,44 +1,17 @@
-# Analiza podatkov s programom R, 2015/16
+# Analiza podatkov lige NHL
 
 Avtor: Anja Leskovšek
 
+
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2015/16.
 
-## Tematika
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal. Tukaj boste
-napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+V mojem projektu bom naredila anlizo podatkov amreiške hokejske lige NHL (National hockey league). Zbrala bom bom igralce iz različnih klubov in primerjala njihove različne statistike (koliko je dal točk, koliko časa je bil na ledu v eni igri, koliko iger je odigral,...). Odločila sem se da bom vzela za analizo podatke iz leta 2014\2015. 
 
-## Program
+## Cilj:
 
-Glavni program in poročilo se nahajata v datoteki `projekt.Rmd`. Ko ga prevedemo,
-se izvedejo programi, ki ustrezajo drugi, tretji in četrti fazi projekta:
+Cilj mojega projekta je primerjati igralce med sabo, ugotoviti kateri je najbolši v posameznih kategorijah in kateri ima najbolše statistike,...
 
-* obdelava, uvoz in čiščenje podatkov: `uvoz/uvoz.r`
-* analiza in vizualizacija podatkov: `vizualizacija/vizualizacija.r`
-* napredna analiza podatkov: `analiza/analiza.r`
+## Viri:
 
-Vnaprej pripravljene funkcije se nahajajo v datotekah v mapi `lib/`. Podatkovni
-viri so v mapi `podatki/`. Zemljevidi v obliki SHP, ki jih program pobere, se
-shranijo v mapo `../zemljevidi/` (torej izven mape projekta).
-
-## Spletni vmesnik
-
-Spletni vmesnik se nahaja v datotekah v mapi `shiny/`. Poženemo ga tako, da v
-RStudiu odpremo datoteko `server.R` ali `ui.R` ter kliknemo na gumb *Run App*.
-Alternativno ga lahko poženemo tudi tako, da poženemo program `shiny.r`.
-
-## Potrebni paketi za R
-
-Za zagon tega vzorca je potrebno namestiti sledeče pakete za R:
-
-* `knitr` - za izdelovanje poročila
-* `rmarkdown` - za prevajanje poročila v obliki RMarkdown
-* `shiny` - za prikaz spletnega vmesnika
-* `DT` - za prikaz interaktivne tabele
-* `maptools` - za uvoz zemljevidov
-* `sp` - za delo z zemljevidi
-* `digest` - za zgoščevalne funkcije (uporabljajo se za shranjevanje zemljevidov)
-* `httr` - za pobiranje spletnih strani
-* `XML` - za branje spletnih strani
-* `extrafont` - za pravilen prikaz šumnikov (neobvezno)
+http://www.nhl.com/stats/player?reportType=season&report=skatersummary&season=20142015&gameType=2&aggregate=0&pos=S

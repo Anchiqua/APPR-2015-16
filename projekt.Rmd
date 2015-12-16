@@ -8,7 +8,7 @@ output:
       in_header: lib/styles.sty
 ---
 
-```{r setup, echo=FALSE, results='hide', message=FALSE}
+```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 # Če želimo nastaviti pisave v PDF-ju, odkomentiramo
 # in sledimo navodilom v programu.
 #source("fontconfig.r", encoding = "UTF-8")
@@ -22,23 +22,24 @@ Moja tema je analiza podatkov hokejske lige NHL za leto 15/14.
 V mojem projektu bom naredilarazlične primerjave in analize.  Najbolj me zanima analiza njihove statistike glede na njihov rojstni datum. Glede na raziskave (http://www.bbc.com/sport/olympics/18891749) naj bi bili hokejisti rojeni januarja, febuarja ali marca boljši. Primerjala bom torej njihovo statistiko in mesec rojstva, ter ugotovila ali raziskava tudi v mojem primeru drži. 
 
 
-***
 
 # Obdelava, uvoz in čiščenje podatkov
 POVEZAVE:
--http://www.nhl.com/stats/player?reportType=season&report=skatersummary&season=20142015&gameType=2&sort=points&aggregate=1&pos=S
--http://www.nhl.com/stats/player?reportType=season&report=bios&season=20142015&gameType=2&sort=playerBirthDate&aggregate=1&pos=S
+
+- http://www.nhl.com/stats/player?reportType=season&report=skatersummary&season=20142015&gameType=2&sort=points&aggregate=1&pos=S
+- http://www.nhl.com/stats/player?reportType=season&report=bios&season=20142015&gameType=2&sort=playerBirthDate&aggregate=1&pos=S
 
 
 
-```{r uvoz, echo=FALSE}
+
+```{r uvoz, echo=FALSE, message=FALSE}
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 Podatke, ki sem jih uvozila so bili v obliki JSON. 
 
 Na prvem linku imamo veliko statistik za 882 igralcev, vendar za moj projekt niso vse pomembne, zato sem nekaj stolpcev tudi odstranila. 
 
--imena igralcev (imenska spremenljivka)
+- imena igralcev (imenska spremenljivka)
 - odigrane tekme ( številska spremenljivka): koliko tekem je posamezni igralec odigral v sezoni
 - streli ( številska spremenljivka ): koliko strelov je posamezni igralec imel v sezoni
 - goli ( številska spremenljivka ): koliko golov je posamezni igralec dal v sezoni
@@ -51,9 +52,9 @@ Na prvem linku imamo veliko statistik za 882 igralcev, vendar za moj projekt nis
 Te stolpce sem preuredila in preimenovala v slovenščino. Za procent strela sem sama napisala funkcijo za izračun in dodala h tabeli ter odstranila tiste vrstice, ki so vsebovale NA. Ker so nekateri igralci zelo malo igrali sem odstranila vse tiste vrstice, kjer so bil odigrane tekme pod 15. Potem sem tabelo razvrstila po abecednem vrstnem redu imen. Poleg prvotne tabele sem naredila še dodatno tabelo, ki sem jo imenovala povprečja, kjer sem izračunala povprečje vsake podkategorije.
 
 Na drugem linku pa je bilo veliko različnih podatkov za iste igralce, vendar ko sem jih uvozila sem odstranila vse stolpce in so mi ostali le:
--igralci
--višina igralcev
--rojstni datum
+- igralci
+- višina igralcev
+- rojstni datum
 
 Iz teh podatkov sem naredila tabelo in jo združila z prvotno po igralcih. Tiste, ki sem že prej odstranila se niso dodali zraven.
 
@@ -62,54 +63,38 @@ Iz teh podatkov sem naredila tabelo in jo združila z prvotno po igralcih. Tiste
 Naredila sem nekaj grafov z plotly in ggplo2. Z plotly sem naredila grafe, ki prikazujejo koliko točk, strelov, golov in asistenc je posamezni igralec dal v vseh odigranih tekmah skupaj. Z ggplot2 pa sem za prikaz naredila 6 grafov, ki prikazujejo koliko igralce in njiihove različne statistike ( koliko točk so dali, goli, asistence,streli, odigrane tekme ter njihov strelni procent) ter jih primerjala z drugimi igralci. Zraven sem tudi dodala ravno vodoravno črto, ki prikazuje povprečje določene kategorije.
 
 
-```{r razpredelnice}
-kable(head(druzine))
-head(obcine)
-```
+
+
+Podatke, ki sem jih uvozila so bili v obliki JSON. 
+
+Na prvem linku imamo veliko statistik za 882 igralcev, vendar za moj projekt niso vse pomembne, zato sem nekaj stolpcev tudi odstranila. 
+
+- imena igralcev (imenska spremenljivka)
+- odigrane tekme ( številska spremenljivka): koliko tekem je posamezni igralec odigral v sezoni
+- streli ( številska spremenljivka ): koliko strelov je posamezni igralec imel v sezoni
+- goli ( številska spremenljivka ): koliko golov je posamezni igralec dal v sezoni
+- asistence ( številska spremenljivka ): koliko asistenc je posamezni igralec imel v sezoni
+- točke (številska spremenljivka): koliko točk je dal posamezni igralec v sezoni
+- igralni položaj ( imenska spremenljivka ): na katerem položaju je igral igralec -> D=branilec, L=levo krilo, R=desno krilo, C=center.
+- strelni procent (številska spremenljivka): koliko golov je posamezni igralec zadel glede na strele v sezoni
+
+
+Te stolpce sem preuredila in preimenovala v slovenščino. Za procent strela sem sama napisala funkcijo za izračun in dodala h tabeli ter odstranila tiste vrstice, ki so vsebovale NA. Ker so nekateri igralci zelo malo igrali sem odstranila vse tiste vrstice, kjer so bil odigrane tekme pod 15. Potem sem tabelo razvrstila po abecednem vrstnem redu imen. Poleg prvotne tabele sem naredila še dodatno tabelo, ki sem jo imenovala povprečja, kjer sem izračunala povprečje vsake podkategorije.
+
+Na drugem linku pa je bilo veliko različnih podatkov za iste igralce, vendar ko sem jih uvozila sem odstranila vse stolpce in so mi ostali le:
+- igralci
+- višina igralcev
+- rojstni datum
+
+Iz teh podatkov sem naredila tabelo in jo združila z prvotno po igralcih. Tiste, ki sem že prej odstranila se niso dodali zraven.
+
+
+
+Naredila sem nekaj grafov z plotly in ggplo2. Z plotly sem naredila grafe, ki prikazujejo koliko točk, strelov, golov in asistenc je posamezni igralec dal v vseh odigranih tekmah skupaj. Z ggplot2 pa sem za prikaz naredila 6 grafov, ki prikazujejo koliko igralce in njiihove različne statistike ( koliko točk so dali, goli, asistence,streli, odigrane tekme ter njihov strelni procent) ter jih primerjala z drugimi igralci. Zraven sem tudi dodala ravno vodoravno črto, ki prikazuje povprečje določene kategorije.
+
 
 Slika \ref{fig:histogram} prikazuje porazdelitev števila naselij v občinah.
 
 ```{r histogram, echo=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-hist(obcine[,4], main = "Pogostost števila naselij",
-     xlab = "Število naselij", ylab = "Število občin")
+p
 ```
-
-***
-
-# Analiza in vizualizacija podatkov
-
-```{r vizualizacija, echo=FALSE}
-source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
-```
-
-Slika \ref{fig:zemljevid} prikazuje povprečno velikost družine za vsako občino.
-
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-n <- 100
-barve <- topo.colors(n)[1+(n-1)*(druzine$povprecje-min.povprecje)/(max.povprecje-min.povprecje)]
-plot(zemljevid, col = barve)
-title("Povprečno število otrok v družini")
-```
-
-***
-
-# Napredna analiza podatkov
-
-```{r analiza, echo=FALSE}
-source("analiza/analiza.r", encoding = "UTF-8")
-```
-
-Slika \ref{fig:graf} prikazuje povezavo med številom naselij in površino občine.
-
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-plot(obcine[[1]], obcine[[4]],
-     main = "Število naselij glede na površino občine",
-     xlab = expression("Površina (km"^2 * ")"),
-     ylab = "Št. naselij",
-     col = barve[obcine[[7]]],
-     pch = 18)
-legend("topright", legend = names(barve), col = barve,
-       pch = 18, cex = 0.5, bg = "white")
-```
-
-***
