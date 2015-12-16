@@ -98,8 +98,8 @@ povprecja$asistence <- sum(tabela$asistence)/687
 povprecja$točke <- sum(tabela$točke)/687
 povprecja$procent.strela <- sum(tabela$procent.strela)/687
 
-write.csv2(tabela, "U:\APPR-2015-16\podatki/tabela.csv", fileEncoding = "UTF-8")
-write.csv2(povprecja, "U:\APPR-2015-16\podatki/povprecja.csv", fileEncoding = "UTF-8")
+write.csv2(tabela, file="podatki/tabela.csv", fileEncoding = "UTF-8")
+write.csv2(povprecja, file="podatki/povprecja.csv", fileEncoding = "UTF-8")
 
 #grafi
 d <- tabela[sample(nrow(tabela), 687), ]
