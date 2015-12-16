@@ -1,6 +1,6 @@
 ---
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
-author: "Študent FMF"
+author: "Anja Leskovšek"
 output:
   pdf_document:
     latex_engine: xelatex
@@ -30,6 +30,10 @@ POVEZAVE:
 -http://www.nhl.com/stats/player?reportType=season&report=bios&season=20142015&gameType=2&sort=playerBirthDate&aggregate=1&pos=S
 
 
+
+```{r uvoz, echo=FALSE}
+source("uvoz/uvoz.r", encoding = "UTF-8")
+```
 Podatke, ki sem jih uvozila so bili v obliki JSON. 
 
 Na prvem linku imamo veliko statistik za 882 igralcev, vendar za moj projekt niso vse pomembne, zato sem nekaj stolpcev tudi odstranila. 
@@ -57,16 +61,6 @@ Iz teh podatkov sem naredila tabelo in jo združila z prvotno po igralcih. Tiste
 
 Naredila sem nekaj grafov z plotly in ggplo2. Z plotly sem naredila grafe, ki prikazujejo koliko točk, strelov, golov in asistenc je posamezni igralec dal v vseh odigranih tekmah skupaj. Z ggplot2 pa sem za prikaz naredila 6 grafov, ki prikazujejo koliko igralce in njiihove različne statistike ( koliko točk so dali, goli, asistence,streli, odigrane tekme ter njihov strelni procent) ter jih primerjala z drugimi igralci. Zraven sem tudi dodala ravno vodoravno črto, ki prikazuje povprečje določene kategorije.
 
-***
-
-# Obdelava, uvoz in čiščenje podatkov
-
-```{r uvoz, echo=FALSE}
-source("uvoz/uvoz.r", encoding = "UTF-8")
-```
-
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Poglejmo si začetka obeh uvoženih razpredelnic.
 
 ```{r razpredelnice}
 kable(head(druzine))
