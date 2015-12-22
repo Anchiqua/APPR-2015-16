@@ -67,9 +67,16 @@ Iz teh podatkov sem naredila tabelo in jo združila z prvotno po igralcih. Tiste
 Naredila sem nekaj grafov z plotly in ggplot2. 
 
 
-
-
-Slika \ref{fig:slika1} prikazuje koliko je posamezni igralec dosegel točk glede na odigrane tekme v sezoni. 
-
 ```print(slika1)```
 
+Slika \ref(slika1) prikazuje koliko je posamezni igralec dosegel točk glede na odigrane tekme v sezoni. 
+
+```print(slika2)```
+```print(slika3)```
+```print(slika4)```
+```print(slika5)```
+```print(slika6)```
+```print(slika7)```
+```print(slika8)```
+```print(slika9)```
+```print(slika10)```
