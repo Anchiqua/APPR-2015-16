@@ -41,7 +41,7 @@ source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 Podatke, ki sem jih uvozila so bili v obliki JSON. 
 
-Na prvem linku imamo veliko statistik za 882 igralcev, vendar za moj projekt niso vse pomembne, zato sem nekaj stolpcev tudi odstranila. 
+Na prvem linku imamo veliko statistik za 882 igralcev, vendar za moj projekt niso vse pomembne, zato sem nekaj stolpcev tudi odstranila. Ostala mi je tabela z naslednjimi stolpci:
 
 - imena igralcev (imenska spremenljivka)
 - odigrane tekme ( številska spremenljivka): koliko tekem je posamezni igralec odigral v sezoni
@@ -53,30 +53,68 @@ Na prvem linku imamo veliko statistik za 882 igralcev, vendar za moj projekt nis
 - strelni procent (številska spremenljivka): koliko golov je posamezni igralec zadel glede na strele v sezoni
 
 
-Te stolpce sem preuredila in preimenovala v slovenščino. Za procent strela sem sama napisala funkcijo za izračun in dodala h tabeli ter odstranila tiste vrstice, ki so vsebovale NA. Ker so nekateri igralci zelo malo igrali sem odstranila vse tiste vrstice, kjer so bil odigrane tekme pod 15. Potem sem tabelo razvrstila po abecednem vrstnem redu imen. Poleg prvotne tabele sem naredila še dodatno tabelo, ki sem jo imenovala povprečja, kjer sem izračunala povprečje vsake podkategorije.
+Te stolpce sem preuredila in preimenovala v slovenščino. Za procent strela sem sama napisala funkcijo za izračun in dodala h tabeli ter odstranila tiste vrstice, ki so vsebovale NA. Ker so nekateri igralci zelo malo igrali sem odstranila vse tiste vrstice, kjer so bile odigrane tekme pod 15. Potem sem tabelo razvrstila po abecednem vrstnem redu imen. Poleg prvotne tabele sem naredila še dodatno tabelo, ki sem jo imenovala povprečja, kjer sem izračunala povprečje vsake podkategorije.
 
 Na drugem linku pa je bilo veliko različnih podatkov za iste igralce, vendar ko sem jih uvozila sem odstranila vse stolpce in so mi ostali le:
 - igralci
 - višina igralcev
 - rojstni datum
 
-Iz teh podatkov sem naredila tabelo in jo združila z prvotno po igralcih. Tiste, ki sem že prej odstranila se niso dodali zraven.
-
-
+Rojstni datum sem spremenila v dva stolpca, ki vsebujeta le letnico in mesec rojstva. To tabelo nato dodala k prvotni tabeli,
 
 Naredila sem nekaj grafov z plotly in ggplot2. 
 
 
-```print(slika1)```
 
-Slika \ref(slika1) prikazuje koliko je posamezni igralec dosegel točk glede na odigrane tekme v sezoni. 
 
-```print(slika2)```
-```print(slika3)```
-```print(slika4)```
-```print(slika5)```
-```print(slika6)```
-```print(slika7)```
-```print(slika8)```
-```print(slika9)```
-```print(slika10)```
+```{r slika6, echo=FALSE, message=FALSE, warning=FALSE}
+print(slika6)
+```
+
+
+
+
+
+Slika \ref{fig:slika6} prikazuje koliko točk je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh točk v sezoni.
+
+
+```{r slika7, echo=FALSE, message=FALSE, warning=FALSE}
+print(slika7)
+```
+
+
+
+
+
+Slika \ref{fig:slika7} prikazuje koliko golov je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh golov v sezoni.
+
+```{r slika8, echo=FALSE, message=FALSE, warning=FALSE}
+print(slika8)
+```
+
+
+
+
+
+Slika \ref{fig:slika8} prikazuje koliko asistenc je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh asistenc v sezoni.
+
+```{r slika9, echo=FALSE, message=FALSE, warning=FALSE}
+print(slika9)
+```
+
+
+
+
+
+Slika \ref{fig:slika9} prikazuje koliko strelov je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh strelov v sezoni.
+
+```{r slika10, echo=FALSE, message=FALSE, warning=FALSE}
+print(slika10)
+```
+
+
+
+
+
+Slika \ref{fig:slika6} prikazuje višino posameznega igralca. Ravna črta pa prikazuje povprečje.
+
