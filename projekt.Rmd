@@ -78,6 +78,9 @@ print(slika6)
 Slika \ref{fig:slika6} prikazuje koliko točk je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh točk v sezoni.
 
 
+
+
+
 ```{r slika7, echo=FALSE, message=FALSE, warning=FALSE}
 print(slika7)
 ```
@@ -87,6 +90,9 @@ print(slika7)
 
 
 Slika \ref{fig:slika7} prikazuje koliko golov je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh golov v sezoni.
+
+
+
 
 ```{r slika8, echo=FALSE, message=FALSE, warning=FALSE}
 print(slika8)
@@ -98,6 +104,9 @@ print(slika8)
 
 Slika \ref{fig:slika8} prikazuje koliko asistenc je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh asistenc v sezoni.
 
+
+
+
 ```{r slika9, echo=FALSE, message=FALSE, warning=FALSE}
 print(slika9)
 ```
@@ -107,6 +116,9 @@ print(slika9)
 
 
 Slika \ref{fig:slika9} prikazuje koliko strelov je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh strelov v sezoni.
+
+
+
 
 ```{r slika10, echo=FALSE, message=FALSE, warning=FALSE}
 print(slika10)
