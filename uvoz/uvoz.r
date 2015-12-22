@@ -127,40 +127,43 @@ write.csv2(povprecja, file="podatki/povprecja.csv", fileEncoding = "UTF-8")
 
 
 #grafi
-d <- tabela[sample(nrow(tabela), 687), ]
-plot_ly(d, x = odigrane.tekme, y = točke, text = paste("igralci: ", igralci),
-        mode = "markers", color = točke,  size=točke)
+slika1 <- plot_ly(tabela, x = odigrane.tekme, y = točke, text = paste("igralci: ", igralci),
+                  mode = "markers", color = točke,  size=točke)
 
-plot_ly(d, x = odigrane.tekme, y = streli, text = paste("igralci: ", igralci),
-        mode = "markers", color = streli,  size=streli)
+slika2 <- plot_ly(tabela, x = odigrane.tekme, y = streli, text = paste("igralci: ", igralci),
+                  mode = "markers", color = streli,  size=streli)
 
-plot_ly(d, x = odigrane.tekme, y = goli, text = paste("igralci: ", igralci),
-        mode = "markers", color = goli,  size=goli)
+slika3 <- plot_ly(tabela, x = odigrane.tekme, y = goli, text = paste("igralci: ", igralci),
+                  mode = "markers", color = goli,  size=goli)
 
-plot_ly(d, x = odigrane.tekme, y = asistence, text = paste("igralci: ", igralci),
-        mode = "markers", color = asistence,  size=asistence)
+slika4 <- plot_ly(tabela, x = odigrane.tekme, y = asistence, text = paste("igralci: ", igralci),
+                  mode = "markers", color = asistence,  size=asistence)
 
+slika5 <- plot_ly(tabela, x = streli, y = procent.strela, text = paste(igralci),
+                  mode = "markers", color = procent.strela,  size=procent.strela)
 
-p <- ggplot(tabela, aes(x = igralci, y=točke)) + geom_point() +
+slika6 <- ggplot(tabela, aes(x = igralci, y=točke)) + geom_point(aes(colour=točke)) +
+  scale_colour_gradient2(low = "yellow", mid = "orange1",high = "red4", midpoint = povprecja$točke) + 
   geom_hline(data=povprecja, aes(yintercept=točke))
 
-a <- ggplot(tabela, aes(x = igralci, y=odigrane.tekme)) + geom_point()
-a+geom_hline(data=povprecja, aes(yintercept=odigrane.tekme))
+slika7 <- ggplot(tabela, aes(x = igralci, y=goli)) + geom_point(aes(colour=goli)) +
+  scale_colour_gradient2(low = "lightskyblue", mid = "steelblue2",high = "royalblue3", midpoint = povprecja$goli) + 
+  geom_hline(data=povprecja, aes(yintercept=goli))
 
-b <- ggplot(tabela, aes(x = igralci, y=goli)) + geom_point()
-b+geom_hline(data=povprecja, aes(yintercept=goli))
 
-c <- ggplot(tabela, aes(x = igralci, y=asistence)) + geom_point()
-c+geom_hline(data=povprecja, aes(yintercept=asistence))
+slika7 <- ggplot(tabela, aes(x = igralci, y=asistence)) + geom_point(aes(colour=asistence)) +
+  scale_colour_gradient2(low = "yellow", mid = "orange1",high = "red4", midpoint = povprecja$asistence) + 
+  geom_hline(data=povprecja, aes(yintercept=asistence))
 
-d <- ggplot(tabela, aes(x = igralci, y=streli)) + geom_point()
-d+geom_hline(data=povprecja, aes(yintercept=streli))
 
-e <- ggplot(tabela, aes(x = igralci, y=procent.strela)) + geom_point()
-e+geom_hline(data=povprecja, aes(yintercept=procent.strela))
+slika8 <- ggplot(tabela, aes(x = igralci, y=streli)) + geom_point(aes(colour=streli)) +
+  scale_colour_gradient2(low = "yellow", mid = "orange1",high = "red4", midpoint = povprecja$streli) + 
+  geom_hline(data=povprecja, aes(yintercept=streli))
 
-f <- ggplot(tabela, aes(x = igralci, y=višina)) + geom_point()
-f+geom_hline(data=povprecja, aes(yintercept=višina))
+
+slika9 <- ggplot(tabela, aes(x = igralci, y=višina)) + geom_point(aes(colour=višina)) +
+  scale_colour_gradient2(low = "yellow", mid = "orange1",high = "red4", midpoint = povprecja$višina) + 
+  geom_hline(data=povprecja, aes(yintercept=višina))
 
 
 
