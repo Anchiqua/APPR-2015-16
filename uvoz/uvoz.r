@@ -8,6 +8,8 @@ require(zoo)
 library(rvest)
 require(plyr)
 library(gsubfn)
+library(knitr)
+
 
 r <- GET("http://www.nhl.com/stats/rest/grouped/skaters/season/skatersummary?cayenneExp=seasonId=20142015%20and%20gameTypeId=2")
 text <- content(r, "text", encoding = "UTF-8")
@@ -147,22 +149,22 @@ slika6 <- ggplot(tabela, aes(x = igralci, y=točke)) + geom_point(aes(colour=to�
   geom_hline(data=povprecja, aes(yintercept=točke))
 
 slika7 <- ggplot(tabela, aes(x = igralci, y=goli)) + geom_point(aes(colour=goli)) +
-  scale_colour_gradient2(low = "lightskyblue", mid = "steelblue2",high = "royalblue3", midpoint = povprecja$goli) + 
+  scale_colour_gradient2(low = "lightskyblue1", mid = "steelblue2",high = "navyblue", midpoint = povprecja$goli) + 
   geom_hline(data=povprecja, aes(yintercept=goli))
 
 
-slika7 <- ggplot(tabela, aes(x = igralci, y=asistence)) + geom_point(aes(colour=asistence)) +
-  scale_colour_gradient2(low = "yellow", mid = "orange1",high = "red4", midpoint = povprecja$asistence) + 
+slika8 <- ggplot(tabela, aes(x = igralci, y=asistence)) + geom_point(aes(colour=asistence)) +
+  scale_colour_gradient2(low = "yellow", mid = "springgreen2",high = "saddlebrown", midpoint = povprecja$asistence) + 
   geom_hline(data=povprecja, aes(yintercept=asistence))
 
 
-slika8 <- ggplot(tabela, aes(x = igralci, y=streli)) + geom_point(aes(colour=streli)) +
-  scale_colour_gradient2(low = "yellow", mid = "orange1",high = "red4", midpoint = povprecja$streli) + 
+slika9 <- ggplot(tabela, aes(x = igralci, y=streli)) + geom_point(aes(colour=streli)) +
+  scale_colour_gradient2(low = "mistyrose", mid = "maroon1",high = "violetred4", midpoint = povprecja$streli) + 
   geom_hline(data=povprecja, aes(yintercept=streli))
 
 
-slika9 <- ggplot(tabela, aes(x = igralci, y=višina)) + geom_point(aes(colour=višina)) +
-  scale_colour_gradient2(low = "yellow", mid = "orange1",high = "red4", midpoint = povprecja$višina) + 
+slika10 <- ggplot(tabela, aes(x = igralci, y=višina)) + geom_point(aes(colour=višina)) +
+  scale_colour_gradient2(low = "khaki1", mid = "sienna1",high = "lightsalmon4", midpoint = povprecja$višina) + 
   geom_hline(data=povprecja, aes(yintercept=višina))
 
 

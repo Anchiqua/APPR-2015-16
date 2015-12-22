@@ -2,10 +2,12 @@
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
 author: "Anja Leskovšek"
 output:
+  html_document: default
   pdf_document:
-    latex_engine: xelatex
     includes:
       in_header: lib/styles.sty
+    latex_engine: xelatex
+  word_document: default
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
@@ -15,6 +17,8 @@ output:
 
 # Uvoz vseh potrebnih knjižnic
 source("lib/libraries.r", encoding = "UTF-8")
+result="hide"
+message=FALSE
 ```
 
 # Izbira teme
@@ -65,8 +69,7 @@ Naredila sem nekaj grafov z plotly in ggplot2.
 
 
 
-Slika \ref{fig:slika1} prikazuje 
+Slika \ref{fig:slika1} prikazuje koliko je posamezni igralec dosegel točk glede na odigrane tekme v sezoni. 
 
-```{r slika1, echo=FALSE, fig.align='center', fig.cap='število doseženih točk v sezoni'}
-p
-```
+```print(slika1)```
+
