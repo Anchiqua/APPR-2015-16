@@ -1,4 +1,3 @@
-library(knitr)
 library(dplyr)
 library(plotly)
 library(ggplot2)
@@ -6,8 +5,8 @@ require(jsonlite)
 require(httr)
 require(zoo)
 library(rvest)
-require(plyr)
 library(gsubfn)
+library(knitr)
 
 
 # Uvozimo funkcije za delo z datotekami XML.

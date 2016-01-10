@@ -1,15 +1,4 @@
 # 2. faza: Uvoz podatkov
-library(dplyr)
-library(plotly)
-library(ggplot2)
-require(jsonlite)
-require(httr)
-require(zoo)
-library(rvest)
-require(plyr)
-library(gsubfn)
-library(knitr)
-
 
 r <- GET("http://www.nhl.com/stats/rest/grouped/skaters/season/skatersummary?cayenneExp=seasonId=20142015%20and%20gameTypeId=2")
 text <- content(r, "text", encoding = "UTF-8")
@@ -46,7 +35,6 @@ podatki$data.gamesPlayed <- NULL
 podatki$data.goals <- NULL
 podatki$data.penaltyMinutes <- NULL
 podatki$data.playerBirthCity <- NULL
-podatki$data.playerBirthCountry <- NULL
 podatki$data.playerBirthStateProvince <-NULL
 podatki$data.playerCurrentSweaterNumber <- NULL
 podatki$data.playerDraftOverallPickNo <- NULL
@@ -65,10 +53,12 @@ podatki$data.points <- NULL
 podatki$data.seasonId <- NULL
 podatki$total <- NULL
 
-podatki <- podatki[c(3,1,2)]
+podatki <- podatki[c(4,1,2,3)]
 names(podatki)[1] <- "igralci"
-names(podatki)[2] <- "datum.rojstva"
-names(podatki)[3] <- "višina"
+names(podatki)[3] <- "datum.rojstva"
+names(podatki)[4] <- "višina"
+names(podatki)[2] <- "država"
+
 
 tabela <- tabela[c(4,2,7,3,1,6,5)]
 
@@ -83,12 +73,17 @@ names(tabela)[7] <- "igralni.položaj"
 #združimo podatke
 tabela <- inner_join(tabela, podatki)
 
+#iz podatkov izračunamo procent strela
 tabela["procent.strela"] <- (tabela$goli / tabela$streli)*100
 tabela <- tabela[!is.na(tabela$procent.strela),]
 tabela[tabela$odigrane.tekme <= 15, ] <- NA
 tabela <- tabela[!is.na(tabela$odigrane.tekme),]
 
+#razporedimo tabelo po igralcih
 tabela <- arrange(tabela, igralci)
+
+#zaokrožimo procent strela
+tabela[,11] <- round(tabela[,11],2)
 
 #preuredimo datume rojstva
 datumi <- tabela$datum.rojstva %>% strapplyc("([0-9]+)-([0-9]+)-([0-9]+)") %>% sapply(as.numeric) %>% t()
@@ -121,7 +116,7 @@ povprecja[,5] <- round(povprecja[,5],0)
 povprecja[,6] <- round(povprecja[,6],2)
 povprecja[,7] <- round(povprecja[,7],2)
 
-tabela <- tabela[c(1,10,11,2,3,4,5,6,7,8,9)]
+tabela <- tabela[c(1,8,11,12,9,3,4,5,6,10,7,2)]
 
 
 write.csv2(tabela, file="podatki/tabela.csv", fileEncoding = "UTF-8")
