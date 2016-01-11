@@ -57,7 +57,9 @@ b.skupina <- filter(točke, mesec.rojstva < 7)
 
 avsota <- sum(a.skupina$točke)
 bvsota <- sum(b.skupina$točke)
-
+ggplot(točke %>% group_by(polletje = ifelse(mesec.rojstva < 7, "H1", "H2")) %>%
+         summarise(točke = sum(točke)), aes(x = polletje, y = točke)) +
+  geom_bar(stat = "identity")
   
 
 #vidimo, da je več igralcev iz druge polovice, ki imajo več točk
