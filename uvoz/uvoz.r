@@ -56,8 +56,8 @@ podatki$total <- NULL
 podatki <- podatki[c(4,1,2,3)]
 names(podatki)[1] <- "igralci"
 names(podatki)[3] <- "datum.rojstva"
-names(podatki)[4] <- "višina"
-names(podatki)[2] <- "država"
+names(podatki)[4] <- "visina"
+names(podatki)[2] <- "drzava"
 
 
 tabela <- tabela[c(4,2,7,3,1,6,5)]
@@ -67,8 +67,8 @@ names(tabela)[2] <- "odigrane.tekme"
 names(tabela)[3] <- "streli"
 names(tabela)[4] <- "goli"
 names(tabela)[5] <- "asistence"
-names(tabela)[6] <- "točke"
-names(tabela)[7] <- "igralni.položaj"
+names(tabela)[6] <- "tocke"
+names(tabela)[7] <- "igralni.polozaj"
 
 #združimo podatke
 tabela <- inner_join(tabela, podatki)
@@ -96,7 +96,7 @@ tabela$mesec.rojstva <- datumi$X2
 tabela$datum.rojstva <- NULL
 
 #naredimo novo tabelo, da vidimo povprečja podkategorij
-imena <- c("odigrane.tekme", "streli", "goli", "asistence", "točke", "procent.strela")
+imena <- c("odigrane.tekme", "streli", "goli", "asistence", "tocke", "procent.strela")
 povprecja <- matrix(data = NA, nrow=1, ncol=6, byrow = TRUE)
 povprecja <- data.frame(povprecja)
 names(povprecja)<- imena
@@ -104,9 +104,9 @@ povprecja$odigrane.tekme<- sum(tabela$odigrane.tekme)/687
 povprecja$streli <- sum(tabela$streli)/687
 povprecja$goli <- sum(tabela$goli)/687
 povprecja$asistence <- sum(tabela$asistence)/687
-povprecja$točke <- sum(tabela$točke)/687
+povprecja$točke <- sum(tabela$tocke)/687
 povprecja$procent.strela <- sum(tabela$procent.strela)/687
-povprecja$višina <- sum(tabela$višina)/687
+povprecja$višina <- sum(tabela$visina)/687
 
 povprecja[,1] <- round(povprecja[,1],0)
 povprecja[,2] <- round(povprecja[,2],0)
@@ -124,8 +124,8 @@ write.csv2(povprecja, file="podatki/povprecja.csv", fileEncoding = "UTF-8")
 
 
 #grafi
-slika1 <- plot_ly(tabela, x = odigrane.tekme, y = točke, text = paste("igralci: ", igralci),
-                  mode = "markers", color = točke,  size=točke)
+slika1 <- plot_ly(tabela, x = odigrane.tekme, y = tocke, text = paste("igralci: ", igralci),
+                  mode = "markers", color = tocke,  size=tocke)
 
 slika2 <- plot_ly(tabela, x = odigrane.tekme, y = streli, text = paste("igralci: ", igralci),
                   mode = "markers", color = streli,  size=streli)
@@ -139,9 +139,9 @@ slika4 <- plot_ly(tabela, x = odigrane.tekme, y = asistence, text = paste("igral
 slika5 <- plot_ly(tabela, x = streli, y = procent.strela, text = paste(igralci),
                   mode = "markers", color = procent.strela,  size=procent.strela)
 
-slika6 <- ggplot(tabela, aes(x = igralci, y=točke)) + geom_point(aes(colour=točke)) +
+slika6 <- ggplot(tabela, aes(x = igralci, y=tocke)) + geom_point(aes(colour=tocke)) +
   scale_colour_gradient2(low = "yellow", mid = "orange1",high = "red4", midpoint = povprecja$točke) + 
-  geom_hline(data=povprecja, aes(yintercept=točke))
+  geom_hline(data=povprecja, aes(yintercept=tocke))
 
 slika7 <- ggplot(tabela, aes(x = igralci, y=goli)) + geom_point(aes(colour=goli)) +
   scale_colour_gradient2(low = "lightskyblue1", mid = "steelblue2",high = "navyblue", midpoint = povprecja$goli) + 
@@ -158,10 +158,11 @@ slika9 <- ggplot(tabela, aes(x = igralci, y=streli)) + geom_point(aes(colour=str
   geom_hline(data=povprecja, aes(yintercept=streli))
 
 
-slika10 <- ggplot(tabela, aes(x = igralci, y=višina)) + geom_point(aes(colour=višina)) +
+slika10 <- ggplot(tabela, aes(x = igralci, y=visina)) + geom_point(aes(colour=višina)) +
   scale_colour_gradient2(low = "khaki1", mid = "sienna1",high = "lightsalmon4", midpoint = povprecja$višina) + 
-  geom_hline(data=povprecja, aes(yintercept=višina))
+  geom_hline(data=povprecja, aes(yintercept=visina))
 
 
-
-
+#naredimo novo tabelo, kjer bomo imeli države in število igralcev v vsaki državi
+tabela2 <- tabela %>% group_by(drzava) %>%
+  summarise(stevilo = length(igralci))
