@@ -104,9 +104,9 @@ povprecja$odigrane.tekme<- sum(tabela$odigrane.tekme)/687
 povprecja$streli <- sum(tabela$streli)/687
 povprecja$goli <- sum(tabela$goli)/687
 povprecja$asistence <- sum(tabela$asistence)/687
-povprecja$točke <- sum(tabela$tocke)/687
+povprecja$tocke <- sum(tabela$tocke)/687
 povprecja$procent.strela <- sum(tabela$procent.strela)/687
-povprecja$višina <- sum(tabela$visina)/687
+povprecja$visina <- sum(tabela$visina)/687
 
 povprecja[,1] <- round(povprecja[,1],0)
 povprecja[,2] <- round(povprecja[,2],0)
