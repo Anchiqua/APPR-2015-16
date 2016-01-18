@@ -14,7 +14,7 @@ prvipovprecja$odigrane.tekme<- sum(prvi$odigrane.tekme)/383
 prvipovprecja$streli <- sum(prvi$streli)/383
 prvipovprecja$goli <- sum(prvi$goli)/383
 prvipovprecja$asistence <- sum(prvi$asistence)/383
-prvipovprecja$tocke <- sum(prvi$točke)/383
+prvipovprecja$tocke <- sum(prvi$tocke)/383
 prvipovprecja$procent.strela <- sum(prvi$procent.strela)/383
 
 
@@ -33,7 +33,7 @@ drugipovprecja$odigrane.tekme<- sum(drugi$odigrane.tekme)/304
 drugipovprecja$streli <- sum(drugi$streli)/304
 drugipovprecja$goli <- sum(drugi$goli)/304
 drugipovprecja$asistence <- sum(drugi$asistence)/304
-drugipovprecja$točke <- sum(drugi$tocke)/304
+drugipovprecja$tocke <- sum(drugi$tocke)/304
 drugipovprecja$procent.strela <- sum(drugi$procent.strela)/304
 
 
@@ -50,15 +50,15 @@ tocke <- arrange(tocke, desc(tocke))
 tocke[tocke$tocke < 50,] <- NA
 tocke <- tocke[!is.na(tocke$tocke),]
 
-<<<<<<< HEAD
-a.skupina <- filter(točke, mesec.rojstva > 6)
-b.skupina <- filter(točke, mesec.rojstva < 7)
+
+a.skupina <- filter(tocke, mesec.rojstva > 6)
+b.skupina <- filter(tocke, mesec.rojstva < 7)
 
 ggplot(točke %>% group_by(skupini = ifelse(mesec.rojstva < 7, "H1", "H2")) %>%
-         summarise(točke = sum(točke)), aes(x = skupini, y = točke)) +
+         summarise(tocke = sum(tocke)), aes(x = skupini, y = tocke)) +
   geom_bar(stat = "identity", fill="orange")
   
-=======
+
 
 
 a.skupina <- filter(tocke, mesec.rojstva > 6)
@@ -70,7 +70,7 @@ bvsota <- sum(b.skupina$tocke)
 slika12<- ggplot(tocke %>% group_by(polletje = ifelse(mesec.rojstva < 7, "H1", "H2")) %>%
          summarise(tocke = sum(tocke)), aes(x = polletje, y = tocke)) +
   geom_bar(stat = "identity", fill=rainbow(2))  
->>>>>>> bcb403179741581c3f3cd7025bc3af99d25e8c32
+
 
 #vidimo, da je več igralcev iz druge polovice, ki imajo več točk
 #pri profesionalni ligi mesec rojstva ne vpliva toliko, kot pri mlajših fantih
@@ -86,6 +86,7 @@ svet <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthd
                           "ne_50m_admin_0_countries", encoding = "UTF-8")
 
 stevilo <- tabela2
+tabela2$drzava <- factor(tabela2$drzava, levels = levels(svet$adm0_a3))
 m1 <- match(svet$name_long, stevilo$Drzava)
 sv <- pretvori.zemljevid(svet)
 zem1 <- ggplot() + geom_polygon(data=tabela2 %>% right_join(sv, c("drzava" = "adm0_a3")), 
@@ -97,3 +98,5 @@ zem1 <- ggplot() + geom_polygon(data=tabela2 %>% right_join(sv, c("drzava" = "ad
 plot(zem1)
                                  
 #opazimo, da je največ igralcev v Kanadi
+
+
