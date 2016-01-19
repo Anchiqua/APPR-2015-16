@@ -75,7 +75,7 @@ print(slika6)
 
 
 
-Slika \ref{fig:slika6} prikazuje koliko točk je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh točk v sezoni.
+Slika prikazuje koliko točk je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh točk v sezoni.
 
 
 
@@ -89,7 +89,7 @@ print(slika7)
 
 
 
-Slika \ref{fig:slika7} prikazuje koliko golov je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh golov v sezoni.
+Slika prikazuje koliko golov je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh golov v sezoni.
 
 
 
@@ -102,7 +102,7 @@ print(slika8)
 
 
 
-Slika \ref{fig:slika8} prikazuje koliko asistenc je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh asistenc v sezoni.
+Slika prikazuje koliko asistenc je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh asistenc v sezoni.
 
 
 
@@ -115,7 +115,7 @@ print(slika9)
 
 
 
-Slika \ref{fig:slika9} prikazuje koliko strelov je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh strelov v sezoni.
+Slika prikazuje koliko strelov je dal posamezni igralec. Ravna črta pa prikazuje povprečje vseh strelov v sezoni.
 
 
 
@@ -128,19 +128,21 @@ print(slika10)
 
 
 
-Slika \ref{fig:slika10} prikazuje višino posameznega igralca. Ravna črta pa prikazuje povprečje.
+Slika prikazuje višino posameznega igralca. Ravna črta pa prikazuje povprečje.
 
 
 #Analiza in vizualizacija podatkov
 Za analizo podatkov sem najprej pogledala, če so tisti igralci boljši, ki so rojeni v prvem polletju.  Naredila sem dve tabeli, za igralce v prvem polletju in za igralce v drugem polletju. Za vsako kategorijo sem izračunala povprečje.
 
-```{kable(head(prvipovprecja))}
+```{r prvipovprecja, echo=FALSE}
+kable(head(prvipovprecja))
 ```
 
-```{kable(head(drugipovprecja))}
+```{r drugipovprecja, echo=FALSE}
+kable(head(drugipovprecja))
 ```
 
-Na sliki \ref{fig:slika11} sem pokazala koliko točk so dali igralci iz prvega in drugega polletja ter njihovo povprečje. Igralce iz prvega polletja sem označila z rdečo barvo, igralce iz drugega polletja pa z modro. 
+Na sliki sem pokazala koliko točk so dali igralci iz prvega in drugega polletja ter njihovo povprečje. Igralce iz prvega polletja sem označila z rdečo barvo, igralce iz drugega polletja pa z modro. 
 
 ```{r slika11, echo=FALSE, message=FALSE, warning=FALSE}
 print(slika11)
@@ -149,14 +151,14 @@ print(slika11)
 
 Opazimo, da je več modrih pikic v zgornjem delu grafa, kar pomeni, da je več igralcev iz drugega polletja dalo več točk. 
 
-Za boljšo analizo sem podatke razvrstila po doseženih točkah in izbrala 100 igralcev z največ doseženimi točkami. Ponovno sem jih razvrstila v dve polletji in izračunala skupne dosežene točke. Na grafu \ref{fig:slika12} vidimo, da so več točk dosegli igralci rojeni v drugem polletju.
+Za boljšo analizo sem podatke razvrstila po doseženih točkah in izbrala 100 igralcev z največ doseženimi točkami. Ponovno sem jih razvrstila v dve polletji in izračunala skupne dosežene točke. Na spodnjem grafu vidimo, da so več točk dosegli igralci rojeni v drugem polletju.
 
 ```{r slika12, echo=FALSE, message=FALSE, warning=FALSE}
 print(slika12)
 ```
 
 
-Na grafu \ref{fig:slika12} vidimo, da so več točk dosegli igralci rojeni v drugem polletju.
+Očitno je, da so več točk dosegli igralci rojeni v drugem polletju.
 
 Prišla sem do zaključka, da mesec rojstva ne vpliva na boljši rezultat igralcev pri profesionalni ligi kot pa pri mlajših igralcih.
 
@@ -165,7 +167,7 @@ Prišla sem do zaključka, da mesec rojstva ne vpliva na boljši rezultat igralc
 
 Pri naslednji analizi sem naredila novo tabelo, kjer sem za stolpce dala igralce, državo, koliko tekem so odigral in koliko točk so dal. Potem sem dodala nov stolpec, kjer sem izračunala koliko točk je igralec v povprečju dal na tekmo. Iz tabele sem nato izbrala le prvih 8 igralcev, ki so imeli najvišjo število točk glede na odigrano tekmo in tako sem dobila osem najboljših igralcev sezone. Spodaj je prikazana tabela.
 
-```{r podatki2_razp, echo=FALSE}
+```{r podatki2, echo=FALSE}
 kable(head(podatki2))
 ```
 
