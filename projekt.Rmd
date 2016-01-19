@@ -183,3 +183,13 @@ print(zem1)
 ```
 
 Opazimo, da je največ igralcev iz Kanade in iz Združenih držav Amerike.
+
+V naslednji tabeli pa sem prikazala koliko točk skupaj so dali igralci iz vsake države. Naredila sem tudi zemljevid za boljšo predstavo.
+
+```{r tabela3, echo=FALSE}
+kable(head(tabela3))
+```
+
+```{r zem2, echo=FALSE, message=FALSE, warning=FALSE}
+print(zem2)
+```
