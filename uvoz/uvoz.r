@@ -140,7 +140,7 @@ slika5 <- plot_ly(tabela, x = streli, y = procent.strela, text = paste(igralci),
                   mode = "markers", color = procent.strela,  size=procent.strela)
 
 slika6 <- ggplot(tabela, aes(x = igralci, y=tocke)) + geom_point(aes(colour=tocke)) +
-  scale_colour_gradient2(low = "yellow", mid = "orange1",high = "red4", midpoint = povprecja$točke) + 
+  scale_colour_gradient2(low = "yellow", mid = "orange1",high = "red4", midpoint = povprecja$tocke) + 
   geom_hline(data=povprecja, aes(yintercept=tocke))
 
 slika7 <- ggplot(tabela, aes(x = igralci, y=goli)) + geom_point(aes(colour=goli)) +
@@ -159,7 +159,7 @@ slika9 <- ggplot(tabela, aes(x = igralci, y=streli)) + geom_point(aes(colour=str
 
 
 slika10 <- ggplot(tabela, aes(x = igralci, y=visina)) + geom_point(aes(colour=visina)) +
-  scale_colour_gradient2(low = "khaki1", mid = "sienna1",high = "lightsalmon4", midpoint = povprecja$višina) + 
+  scale_colour_gradient2(low = "khaki1", mid = "sienna1",high = "lightsalmon4", midpoint = povprecja$visina) + 
   geom_hline(data=povprecja, aes(yintercept=visina))
 
 
@@ -168,4 +168,4 @@ tabela2 <- tabela %>% group_by(drzava) %>%
   summarise(stevilo = length(igralci))
 
 #naredimo novo tabelo, kjer bomo imeli ržave in skupne točke
-
+tabela3 <- tabela2 <- tabela %>% group_by(drzava)
