@@ -51,15 +51,6 @@ tocke[tocke$tocke < 50,] <- NA
 tocke <- tocke[!is.na(tocke$tocke),]
 
 
-a.skupina <- filter(tocke, mesec.rojstva > 6)
-b.skupina <- filter(tocke, mesec.rojstva < 7)
-
-ggplot(točke %>% group_by(skupini = ifelse(mesec.rojstva < 7, "H1", "H2")) %>%
-         summarise(tocke = sum(tocke)), aes(x = skupini, y = tocke)) +
-  geom_bar(stat = "identity", fill="orange")
-  
-
-
 
 a.skupina <- filter(tocke, mesec.rojstva > 6)
 b.skupina <- filter(tocke, mesec.rojstva < 7)
