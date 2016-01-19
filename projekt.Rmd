@@ -165,7 +165,7 @@ Prišla sem do zaključka, da mesec rojstva ne vpliva na boljši rezultat igralc
 
 Pri naslednji analizi sem naredila novo tabelo, kjer sem za stolpce dala igralce, državo, koliko tekem so odigral in koliko točk so dal. Potem sem dodala nov stolpec, kjer sem izračunala koliko točk je igralec v povprečju dal na tekmo. Iz tabele sem nato izbrala le prvih 8 igralcev, ki so imeli najvišjo število točk glede na odigrano tekmo in tako sem dobila osem najboljših igralcev sezone. Spodaj je prikazana tabela.
 
-```{kable(head(podatki2))}
+```head(podatki2)
 ```
 
 
