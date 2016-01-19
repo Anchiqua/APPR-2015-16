@@ -21,6 +21,10 @@ result="hide"
 message=FALSE
 ```
 
+```{r vizualizacija, echo=FALSE, message=FALSE}
+source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
+```
+
 # Izbira teme
 Moja tema je analiza podatkov hokejske lige NHL za leto 15/14.
 V mojem projektu bom naredilarazlične primerjave in analize.  Najbolj me zanima analiza njihove statistike glede na njihov rojstni datum. Glede na raziskave (http://www.bbc.com/sport/olympics/18891749) naj bi bili hokejisti rojeni januarja, febuarja ali marca boljši. Primerjala bom torej njihovo statistiko in mesec rojstva, ter ugotovila ali raziskava tudi v mojem primeru drži. 
@@ -134,11 +138,9 @@ Slika prikazuje višino posameznega igralca. Ravna črta pa prikazuje povprečje
 #Analiza in vizualizacija podatkov
 Za analizo podatkov sem najprej pogledala, če so tisti igralci boljši, ki so rojeni v prvem polletju.  Naredila sem dve tabeli, za igralce v prvem polletju in za igralce v drugem polletju. Za vsako kategorijo sem izračunala povprečje.
 
-```{r prvipovprecja, echo=FALSE}
-kable(head(prvipovprecja))
-```
 
-```{r drugipovprecja, echo=FALSE}
+```{r povprecja, echo=FALSE}
+kable(head(prvipovprecja))
 kable(head(drugipovprecja))
 ```
 
