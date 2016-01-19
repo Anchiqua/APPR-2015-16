@@ -21,9 +21,6 @@ result="hide"
 message=FALSE
 ```
 
-```{r vizualizacija, echo=FALSE, message=FALSE}
-source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
-```
 
 # Izbira teme
 Moja tema je analiza podatkov hokejske lige NHL za leto 15/14.
