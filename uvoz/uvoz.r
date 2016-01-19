@@ -158,7 +158,7 @@ slika9 <- ggplot(tabela, aes(x = igralci, y=streli)) + geom_point(aes(colour=str
   geom_hline(data=povprecja, aes(yintercept=streli))
 
 
-slika10 <- ggplot(tabela, aes(x = igralci, y=visina)) + geom_point(aes(colour=višina)) +
+slika10 <- ggplot(tabela, aes(x = igralci, y=visina)) + geom_point(aes(colour=visina)) +
   scale_colour_gradient2(low = "khaki1", mid = "sienna1",high = "lightsalmon4", midpoint = povprecja$višina) + 
   geom_hline(data=povprecja, aes(yintercept=visina))
 
@@ -166,3 +166,6 @@ slika10 <- ggplot(tabela, aes(x = igralci, y=visina)) + geom_point(aes(colour=vi
 #naredimo novo tabelo, kjer bomo imeli države in število igralcev v vsaki državi
 tabela2 <- tabela %>% group_by(drzava) %>%
   summarise(stevilo = length(igralci))
+
+#naredimo novo tabelo, kjer bomo imeli ržave in skupne točke
+
