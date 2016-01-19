@@ -79,8 +79,8 @@ svet <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthd
 stevilo <- tabela2
 tabela2$drzava <- factor(tabela2$drzava, levels = levels(svet$adm0_a3))
 m1 <- match(svet$name_long, stevilo$Drzava)
-sv <- pretvori.zemljevid(svet)
-zem1 <- ggplot() + geom_polygon(data=tabela2 %>% right_join(sv, c("drzava" = "adm0_a3")), 
+sv1 <- pretvori.zemljevid(svet)
+zem1 <- ggplot() + geom_polygon(data=tabela2 %>% right_join(sv1, c("drzava" = "adm0_a3")), 
                                aes(x=long, y=lat, group=group, fill=stevilo),
                                color="grey") + 
                                  scale_fill_continuous(low="#69b8f6", high="#142d45") +
@@ -90,4 +90,13 @@ plot(zem1)
                                  
 #opazimo, da je največ igralcev v Kanadi
 
+tabela3$drzava <- factor(tabela3$drzava, levels = levels(svet$adm0_a3))
+m2 <- match(svet$name_long, tabela3$Drzava)
+sv2 <- pretvori.zemljevid(svet)
+zem2 <- ggplot() + geom_polygon(data=tabela3 %>% right_join(sv2, c("drzava" = "adm0_a3")), 
+                                aes(x=long, y=lat, group=group, fill=tocke),
+                                color="grey") + 
+  scale_fill_continuous(low="#69b8f6", high="#142d45") +
+  xlab("") + ylab("")
 
+plot(zem2)
