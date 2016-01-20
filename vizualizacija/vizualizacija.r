@@ -4,6 +4,9 @@
 prvi <- tabela
 prvi[prvi$mesec.rojstva >= 7,] <- NA
 prvi <- prvi[!is.na(prvi$mesec.rojstva),]
+prvi[prvi$odigrane.tekme < 39,] <- NA
+prvi <- prvi[!is.na(prvi$odigrane.tekme),]
+
 
 #nareimo novo tabelo z povprečji
 prvipovprecja <- matrix(data = NA, nrow=1, ncol=6, byrow = TRUE)
@@ -23,6 +26,8 @@ prvipovprecja$procent.strela <- sum(prvi$procent.strela)/383
 drugi <- tabela
 drugi[drugi$mesec.rojstva <= 6,] <- NA
 drugi <- drugi[!is.na(drugi$mesec.rojstva),]
+drugi[drugi$odigrane.tekme < 39,] <- NA
+drugi <- drugi[!is.na(drugi$odigrane.tekme),]
 
 #naredimo še njihovo povprečje
 drugipovprecja <- matrix(data = NA, nrow=1, ncol=6, byrow = TRUE)
@@ -73,30 +78,29 @@ podatki2 <- arrange(podatki2, desc(stevilo.tock.na.tekmo))
 podatki2 <- filter(podatki2, stevilo.tock.na.tekmo >=1)
 
 #naredimo zemljevid sveta in na njemu vidimo iz kje so igralci
-svet <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip",
-                          "ne_50m_admin_0_countries", encoding = "UTF-8")
-
-stevilo <- tabela2
+svet <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_countries.zip",
+                                        "ne_110m_admin_0_countries", encoding = "UTF-8")
 tabela2$drzava <- factor(tabela2$drzava, levels = levels(svet$adm0_a3))
-m1 <- match(svet$name_long, stevilo$Drzava)
-sv1 <- pretvori.zemljevid(svet)
-zem1 <- ggplot() + geom_polygon(data=tabela2 %>% right_join(sv1, c("drzava" = "adm0_a3")), 
-                               aes(x=long, y=lat, group=group, fill=stevilo),
-                               color="grey") + 
-                                 scale_fill_continuous(low="#69b8f6", high="#142d45") +
-                                 xlab("") + ylab("")
+m1 <- match(svet$name_long, tabela2$Drzava)
+sv <- pretvori.zemljevid(svet)
+zem1 <- ggplot() + geom_polygon(data=tabela %>% group_by(drzava) %>%
+                                  summarise(stevilo = length(igralci)) %>%
+                                  right_join(sv, c("drzava" = "adm0_a3")), 
+                                aes(x=long, y=lat, group=group, fill=stevilo),
+                                color="grey") + 
+  scale_fill_continuous(low="#69b8f6", high="#142d45") +
+  xlab("") + ylab("")
                                
-plot(zem1)
+#plot(zem1)
                                  
 #opazimo, da je največ igralcev v Kanadi
 
 tabela3$drzava <- factor(tabela3$drzava, levels = levels(svet$adm0_a3))
 m2 <- match(svet$name_long, tabela3$Drzava)
-sv2 <- pretvori.zemljevid(svet)
-zem2 <- ggplot() + geom_polygon(data=tabela3 %>% right_join(sv2, c("drzava" = "adm0_a3")), 
+zem2 <- ggplot() + geom_polygon(data=tabela3 %>% right_join(sv, c("drzava" = "adm0_a3")), 
                                 aes(x=long, y=lat, group=group, fill=tocke),
                                 color="grey") + 
   scale_fill_continuous(low="#69b8f6", high="#142d45") +
   xlab("") + ylab("")
 
-plot(zem2)
+#plot(zem2)
