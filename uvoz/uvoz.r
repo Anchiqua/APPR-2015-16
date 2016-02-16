@@ -168,4 +168,4 @@ tabela2 <- tabela %>% group_by(drzava) %>%
   summarise(stevilo = length(igralci))
 
 #naredimo novo tabelo, kjer bomo imeli ržave in skupne točke
-tabela3 <- tabela2 <- tabela %>% group_by(drzava)
+tabela3 <- tocke %>% group_by(drzava) %>% summarise(tocke = sum(tocke))
