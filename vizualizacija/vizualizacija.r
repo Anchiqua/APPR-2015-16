@@ -100,3 +100,4 @@ zem2 <- ggplot() + geom_polygon(data=tabela3 %>% right_join(sv, c("drzava" = "ad
   scale_fill_continuous(low="#69b8f6", high="#142d45") +
   xlab("") + ylab("")
 
+#plot(zem2)
