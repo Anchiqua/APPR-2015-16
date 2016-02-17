@@ -28,13 +28,12 @@ tabela5 <- tabela[c("igralci", "tocke", "procent.strela")]
 rownames(tabela5) <- tabela5$igralci
 tabela5.norm <- tabela5 %>% select(-igralci) %>% scale()
 k2 <- kmeans(tabela5.norm, 5, nstart=10000) 
-tabela5.skupine <- data.frame(igralci = names(k2$cluster),
-                       skupina = factor(k2$cluster))
+tabela5.skupine <- data.frame(tabela5, skupina = factor(k2$cluster))
 lin <- lm(data = tabela5, tocke ~ procent.strela)
 
-
-slika13 <- ggplot(tabela5.skupine, aes(x=tocke, y=procent.strela)) +
-  geom_point()
+slika13 <- ggplot(tabela5.skupine,
+                             aes(x=tocke, y=procent.strela, color=skupina)) + 
+                              geom_point() + geom_text(aes(label=ifelse(procent.strela>20 & tocke>50,as.character(igralci),'')))
 
 
 #naredimo še predikcijo za tiste, ki so rojeni v prvem polletju in drugem polletju
@@ -46,6 +45,5 @@ b.skupina <- b.skupina[!is.na(b.skupina$tocke),]
 slika14 <- ggplot(a.skupina, aes(x = tocke, y=procent.strela)) + geom_point(colour="red") + geom_smooth(method="lm")
   
 slika15 <- ggplot(b.skupina, aes(x = tocke, y=procent.strela)) + geom_point(colour="blue") + geom_smooth(method="lm")
-
 
 
