@@ -9,7 +9,7 @@ ui <- fluidPage(headerPanel('Skupine'),
                                min = 1, max = 5)
                 ),
                 mainPanel(
-                  plotOutput('slika13')
+                  plotOutput('kmeans')
                 ))
 server <- function(input, output) {
   selectedData <- reactive({
