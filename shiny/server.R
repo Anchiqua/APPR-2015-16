@@ -1,17 +1,22 @@
 library(shiny)
 
-ui <- fluidPage(headerPanel('Skupine'),
-                sidebarPanel(
-                  selectInput('xcol', 'X ', names(tabela)),
-                  selectInput('ycol', 'Y ', names(tabela),
+source("lib/libraries.r", encoding = "UTF-8")
+source("uvoz/uvoz.r", encoding = "UTF-8")
+
+runApp("shiny")
+
+fluidPage(headerPanel('Skupine'),
+              sidebarPanel(
+                selectInput('xcol', 'X ', names(tabela)),
+                selectInput('ycol', 'Y ', names(tabela),
                               selected = names(tabela)[[2]]),
-                  numericInput('clusters', 'skupine', 3,
+                numericInput('clusters', 'skupine', 3,
                                min = 1, max = 5)
-                ),
-                mainPanel(
-                  plotOutput('kmeans')
-                ))
-server <- function(input, output) {
+              ),
+              mainPanel(
+                plotOutput('kmeans')
+              ))
+function(input, output) {
   selectedData <- reactive({
   tabela[, c(input$xcol, input$ycol)]
   })
@@ -20,7 +25,7 @@ server <- function(input, output) {
     kmeans(selectedData(), input$clusters)
   })
 
-  output$plot1 <- renderPlot({
+  output$kmeans <- renderPlot({
     par(mar = c(5.1, 4.1, 0, 1))
     plot(selectedData(),
         col = clusters()$cluster,
