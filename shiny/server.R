@@ -1,11 +1,5 @@
 library(shiny)
 
-source("lib/libraries.r", encoding = "UTF-8")
-source("uvoz/uvoz.r", encoding = "UTF-8")
-
-runApp("shiny")
-
-
 function(input, output) {
   selectedData <- reactive({
   tabela4[, c(input$xcol, input$ycol)]
