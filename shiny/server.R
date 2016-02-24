@@ -5,20 +5,10 @@ source("uvoz/uvoz.r", encoding = "UTF-8")
 
 runApp("shiny")
 
-fluidPage(headerPanel('Skupine'),
-              sidebarPanel(
-                selectInput('xcol', 'X ', names(tabela)),
-                selectInput('ycol', 'Y ', names(tabela),
-                              selected = names(tabela)[[2]]),
-                numericInput('clusters', 'skupine', 3,
-                               min = 1, max = 5)
-              ),
-              mainPanel(
-                plotOutput('kmeans')
-              ))
+
 function(input, output) {
   selectedData <- reactive({
-  tabela[, c(input$xcol, input$ycol)]
+  tabela4[, c(input$xcol, input$ycol)]
   })
 
   clusters <- reactive({
@@ -32,5 +22,3 @@ function(input, output) {
         pch = 20, cex = 3)
       })
 }
-
-shinyApp(ui=ui, server = server)
