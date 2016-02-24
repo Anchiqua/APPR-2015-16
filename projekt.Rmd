@@ -193,3 +193,19 @@ kable(head(tabela3))
 ```{r zem2, echo=FALSE, message=FALSE, warning=FALSE}
 print(zem2)
 ```
+
+
+#Napredna analiza
+
+Za začetek sem naredila skupine držav glede na število točk in igralcev. Na spodnjem zemljevidu so države razporejene v tri skupine. 3. skupina (Kanada) ima največje število igralcev in tudi doseženih točk, druga skupina je ZDA, ki je ravno na sredini. Najmanj igralcev in doseženih točk paje večinoma v Evropi in malo v Ameriki. Očitno je, da je največ igralcev iz Kanade in zato ima tudi največ točk. Tam je namreč 350 igralcev, kar je približno polovica vseh igralcev iz sezone 2014/15, katere sem analizirala.
+
+```{r zem3, echo=FALSE, message=FALSE, warning=FALSE}
+print(zem3)
+```
+
+Naslednja slika prikazuje točkovni graf. Naredila sem skupine igralcev glede na dosežene točke in procent strela. Seveda ima velik vpliv tudi koliko tekem so odigrali, saj imajo zaradi tega nekateri malo doseženih točk kkljub višjemu procentu strela. To najbolj velja za nekatere igralce iz 1. skupine. Najmanj točk so dali igralci iz 2. skupine. Pri 3. skupini sem izpostavila igralca Alexa Tanguaya. Dosegel je malo več kot 50 točk, kar je na boljši polovici, vendar ima kljub temu zelo visok procent strela.
+
+```{r slika13, echo=FALSE, message=FALSE, warning=FALSE}
+print(slika13)
+```
+
