@@ -204,13 +204,20 @@ Za začetek sem naredila skupine držav glede na število točk in igralcev. Na 
 print(zem3)
 ```
 
+<<<<<<< HEAD
 Naslednja slika prikazuje točkovni graf. Naredila sem skupine igralcev glede na dosežene točke in procent strela. Seveda ima velik vpliv tudi koliko tekem so odigrali, saj imajo zaradi tega nekateri malo doseženih točk kkljub višjemu procentu strela. To najbolj velja za nekatere igralce iz 1. skupine. Najmanj točk so dali igralci iz 2. skupine. Pri 3. skupini sem izpostavila igralca Alexa Tanguaya. Dosegel je malo več kot 50 točk, kar je na boljši polovici, vendar ima kljub temu zelo visok procent strela.
+=======
+Naslednja slika prikazuje točkovni graf. Naredila sem skupine igralcev glede na dosežene točke in procent strela. Seveda ima velik vpliv tudi koliko tekem so odigrali, saj imajo zaradi tega nekateri malo doseženih točk kkljub višjemu procentu strela. To najbolj velja za nekatere igralce iz 1. skupine. Najmanj točk so dali igralci iz 2. skupine. Pri 3. skupini sem izpostavila igralca Alexa Tanguaya. Dosegel je malo več kot 50 točk, kar je na boljši polovici, vendar ima kljub temu zelo visok procent strela in zato izstopa iz skupine.
+>>>>>>> f955f372625c701f01bfe457c64f964cc6927d93
 
 ```{r slika13, echo=FALSE, message=FALSE, warning=FALSE}
 print(slika13)
 ```
+<<<<<<< HEAD
 
 
 ```{r, echo = FALSE}
 shinyAppDir("analiza", options=list(width="100%", height=500))
 ```
+=======
+>>>>>>> f955f372625c701f01bfe457c64f964cc6927d93
