@@ -19,6 +19,7 @@ output:
 source("lib/libraries.r", encoding = "UTF-8")
 result="hide"
 message=FALSE
+runtime: shiny
 ```
 
 
@@ -209,3 +210,7 @@ Naslednja slika prikazuje točkovni graf. Naredila sem skupine igralcev glede na
 print(slika13)
 ```
 
+
+```{r, echo = FALSE}
+shinyAppDir("analiza", options=list(width="100%", height=500))
+```
