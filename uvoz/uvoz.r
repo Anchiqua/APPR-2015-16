@@ -173,4 +173,5 @@ tabela2 <- tabela %>% group_by(drzava) %>%
 
 tabela3 <- tabela %>% group_by(drzava) %>% summarise(tocke = sum(tocke))
 
-
+stolpci <- names(tabela)[lapply(tabela, is.numeric) %>% unlist()]
+tabela4 <- tabela[stolpci]
