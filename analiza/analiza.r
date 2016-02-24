@@ -27,7 +27,7 @@ zem3 <- ggplot(tabela5.skupine %>% right_join(sv, by = c("Drzava" = "adm0_a3")),
 tabela6 <- tabela[c("igralci", "tocke", "procent.strela")]
 rownames(tabela6) <- tabela6$igralci
 tabela6.norm <- tabela6 %>% select(-igralci) %>% scale()
-k2 <- kmeans(tabela6.norm, 5, nstart=10000) 
+k2 <- kmeans(tabela6.norm, 3, nstart=10000) 
 tabela6.skupine <- data.frame(tabela6, skupina = factor(k2$cluster))
 lin <- lm(data = tabela6, tocke ~ procent.strela)
 
@@ -45,6 +45,5 @@ b.skupina <- b.skupina[!is.na(b.skupina$tocke),]
 slika14 <- ggplot(a.skupina, aes(x = tocke, y=procent.strela)) + geom_point(colour="red") + geom_smooth(method="lm")
   
 slika15 <- ggplot(b.skupina, aes(x = tocke, y=procent.strela)) + geom_point(colour="blue") + geom_smooth(method="lm")
-
 
 
