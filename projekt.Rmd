@@ -8,7 +8,7 @@ output:
       in_header: lib/styles.sty
     latex_engine: xelatex
   word_document: default
-  runtime: shiny
+runtime: shiny
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
@@ -231,6 +231,6 @@ print(slika15)
 Za konec pa sem naredila še shiny aplikacijo, kjer si lahko izberemo skupine glede na poljubne podatke, ki sem jih zbrala. 
 
 ```{r, echo = FALSE}
-shinyAppDir("analiza", options=list(width="100%", height=500))
+shinyAppDir("shiny", options=list(width="100%", height=500))
 ```
 
