@@ -8,6 +8,7 @@ output:
       in_header: lib/styles.sty
     latex_engine: xelatex
   word_document: default
+  runtime: shiny
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
@@ -19,7 +20,6 @@ output:
 source("lib/libraries.r", encoding = "UTF-8")
 result="hide"
 message=FALSE
-runtime: shiny
 ```
 
 
@@ -198,6 +198,10 @@ print(zem2)
 
 #Napredna analiza
 
+```{r analiza, echo=FALSE, message=FALSE}
+source("analiza/analiza.r", encoding = "UTF-8")
+```
+
 Za začetek sem naredila skupine držav glede na število točk in igralcev. Na spodnjem zemljevidu so države razporejene v tri skupine. 3. skupina (Kanada) ima največje število igralcev in tudi doseženih točk, druga skupina je ZDA, ki je ravno na sredini. Najmanj igralcev in doseženih točk paje večinoma v Evropi in malo v Ameriki. Očitno je, da je največ igralcev iz Kanade in zato ima tudi največ točk. Tam je namreč 350 igralcev, kar je približno polovica vseh igralcev iz sezone 2014/15, katere sem analizirala.
 
 ```{r zem3, echo=FALSE, message=FALSE, warning=FALSE}
@@ -214,7 +218,17 @@ Naslednja slika prikazuje točkovni graf. Naredila sem skupine igralcev glede na
 print(slika13)
 ```
 
+Naslednji dve sliki priazujeta predikcijo za naslednje leto. Prva slika prikazuje igralce rojene v prvi polovici leta in njihove dosežene točke. Druga slika pa prikazuje igralce rojene v drugem polletju in njihove dosežene točke. Ugotovila sem že, da pri profesionalni ligi mesec rojstva ne vpliva na rezultate in da so igralci rojeni v drugi polovici leta dosegli več točk. Na grafih se vidi da se v naslednjem letu ne bo nič spremenilo in bodo igralci, ki so rojeni v drugi polovici leta še vedno boljši. Lahko, da se bo kaj spremenilo čez par let, ko bodo prišli v ligo novi igralci. 
 
+```{r slika14, echo=FALSE, message=FALSE, warning=FALSE}
+print(slika14)
+```
+
+```{r slika15, echo=FALSE, message=FALSE, warning=FALSE}
+print(slika15)
+```
+
+Za konec pa sem naredila še shiny aplikacijo, kjer si lahko izberemo skupine glede na poljubne podatke, ki sem jih zbrala. 
 
 ```{r, echo = FALSE}
 shinyAppDir("analiza", options=list(width="100%", height=500))
