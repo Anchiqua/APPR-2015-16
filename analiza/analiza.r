@@ -10,7 +10,6 @@ tabela5.norm <- tabela5 %>% select(-drzava) %>% scale()
 
 k1 <- kmeans(tabela5.norm, 3)
 #head(k$cluster, n = 15, nstart=1000)
-table(k$cluster)
 k1 <- kmeans(tabela5.norm, 3, nstart = 10000)
 
 tabela5.skupine <- data.frame(Drzava = factor(names(k1$cluster),
