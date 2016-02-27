@@ -2,7 +2,7 @@ library(shiny)
 
 function(input, output) {
   selectedData <- reactive({
-  tabela4[, c(input$xcol, input$ycol)]
+  tabela7.skupine[, c(input$xcol, input$ycol)]
   })
 
   clusters <- reactive({
