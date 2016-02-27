@@ -46,3 +46,10 @@ slika14 <- ggplot(a.skupina, aes(x = tocke, y=procent.strela)) + geom_point(colo
 slika15 <- ggplot(b.skupina, aes(x = tocke, y=procent.strela)) + geom_point(colour="blue") + geom_smooth(method="lm")
 
 
+#tabela za shiny
+tabela7 <- tabela4
+tabela7$igralci <- tabela$igralci
+tabela7.norm <- tabela7 %>% select(-igralci) %>% scale()
+k3 <- kmeans(tabela7.norm, 3, nstart=10000) 
+tabela7.skupine <- data.frame(tabela7, skupina = factor(k3$cluster))
+
