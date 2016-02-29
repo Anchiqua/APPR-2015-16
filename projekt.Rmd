@@ -137,6 +137,7 @@ Slika prikazuje višino posameznega igralca. Ravna črta pa prikazuje povprečje
 
 ```{r vizualizacija, echo=FALSE, message=FALSE}
 source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
+ warning=FALSE
 ```
 
 Za analizo podatkov sem najprej pogledala, če so tisti igralci boljši, ki so rojeni v prvem polletju.  Naredila sem dve tabeli, za igralce v prvem polletju in za igralce v drugem polletju. Za vsako kategorijo sem izračunala povprečje.
